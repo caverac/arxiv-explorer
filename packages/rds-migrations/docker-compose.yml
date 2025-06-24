@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    # either build your local Dockerfile…
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: arxiv-explorer/postgres-vector:17
+
+    # expose & map your port
+    ports:
+      - '${RDS_PORT:-5432}:5432'
+
+    # these *must* match what the official postgres image expects:
+    environment:
+      POSTGRES_USER: '${RDS_USERNAME}'
+      POSTGRES_PASSWORD: '${RDS_PASSWORD}'
+      POSTGRES_DB: '${RDS_DB_NAME:-postgres}'
+
+    # persist data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+    # healthcheck that pings the *right* db name:
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  pgdata:

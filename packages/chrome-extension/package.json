@@ -1,0 +1,45 @@
+{
+  "name": "@arxiv-explorer/chrome-extension",
+  "description": "Chrome extension for the arXiv Explorer project",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc && vite build",
+    "test": "LOGGING_LEVEL=silent jest",
+    "test:one": "ts-node test.ts --runInBand",
+    "ts-coverage": "typescript-coverage-report --threshold 100",
+    "nuke": "rm -rf dist node_modules",
+    "watch:ts": "tsc --build --watch",
+    "watch:vite": "vite build --watch",
+    "dev": "concurrently \"yarn watch:ts\" \"yarn watch:vite\"",
+    "preview": "vite preview",
+    "chakra:snippet": "npx @chakra-ui/cli snippet"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0",
+    "@types/chrome": "^0.0.326",
+    "@types/prop-types": "^15.7.15",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react-swc": "^3.10.2",
+    "concurrently": "^9.1.2",
+    "typescript": "^5.8.3",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^3.21.0",
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@types/styled-components": "^5.1.34",
+    "amazon-cognito-identity-js": "^6.3.15",
+    "next-themes": "^0.4.6",
+    "prop-types": "^15.8.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
+    "react-shadow": "^20.6.0",
+    "styled-components": "^6.1.19",
+    "vite": "^6.3.5"
+  }
+}

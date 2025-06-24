@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.build.json",
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true
+  },
+  "references": [
+    { "path": "./packages/api" },
+    { "path": "./packages/chrome-extension" },
+    { "path": "./packages/infrastructure" },
+    { "path": "./packages/types" }
+  ],
+  "include": ["./packages/**/*"],
+  "exclude": [
+    "**/node_modules",
+    "**/dist",
+    "**/coverage",
+    "**/coverage-ts",
+    "**/cdk.out"
+  ]
+}

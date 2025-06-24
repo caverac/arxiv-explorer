@@ -1,0 +1,36 @@
+{
+  "name": "@arxiv-explorer/rds-migrations",
+  "description": "Arxiv Explorer RDS Migrations",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "LOGGING_LEVEL=silent jest",
+    "test:one": "ts-node test.ts --runInBand",
+    "ts-coverage": "typescript-coverage-report --threshold 100",
+    "cdk": "cdk",
+    "nuke": "rm -rf dist node_modules",
+    "migrate": "node-pg-migrate -m src/migrations --tsconfig ./tsconfig.json -d RDS_DATABASE_URL",
+    "build": "tsc",
+    "docker:build": "docker build -t arxiv-explorer/rds-migrations .",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1",
+    "@types/pg-format": "^1.0.5",
+    "eslint-plugin-cdk": "^1.8.0",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.3",
+    "typescript-coverage-report": "^1.1.1"
+  },
+  "dependencies": {
+    "node-pg-migrate": "^8.0.2",
+    "pg": "^8.16.0",
+    "pg-format": "^1.0.4",
+    "winston": "^3.17.0",
+    "zod": "^3.25.63"
+  }
+}

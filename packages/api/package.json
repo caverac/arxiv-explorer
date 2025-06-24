@@ -1,0 +1,42 @@
+{
+  "name": "@arxiv-explorer/api",
+  "description": "API for the Arxiv Explorer project",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "LOGGING_LEVEL=silent jest",
+    "test:one": "ts-node test.ts --runInBand",
+    "ts-coverage": "typescript-coverage-report --threshold 100",
+    "nuke": "rm -rf dist node_modules",
+    "build:watch": "tsc --watch",
+    "start:watch": "NODE_PATH=`pwd`/dist nodemon -r tsconfig-paths/register -r source-map-support/register dist/index.js",
+    "run:local": "npm-run-all --parallel build:watch start:watch",
+    "run:container": "NODE_PATH=`pwd`/dist node -r tsconfig-paths/register -r source-map-support/register dist/index.js",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^24.0.1",
+    "@types/pg": "^8.15.4",
+    "nodemon": "^3.1.10",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.8.3",
+    "typescript-coverage-report": "^1.1.1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.828.0",
+    "@aws-sdk/client-ssm": "^3.828.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsdom": "^26.1.0",
+    "openai": "^5.3.0",
+    "pg": "^8.16.0",
+    "winston": "^3.17.0",
+    "zod": "^3.25.63"
+  }
+}

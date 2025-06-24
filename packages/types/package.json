@@ -1,0 +1,21 @@
+{
+  "name": "@arxiv-explorer/types",
+  "description": "Type definitions for the arXiv Explorer project",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "private": true,
+  "scripts": {
+    "test": "LOGGING_LEVEL=silent jest",
+    "test:one": "ts-node test.ts --runInBand",
+    "ts-coverage": "typescript-coverage-report --threshold 100",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "nuke": "rm -rf dist node_modules"
+  },
+  "dependencies": {
+    "zod": "^3.25.63"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "arxiv-explorer",
+  "description": "A tool to explore and visualize arXiv papers.",
+  "private": true,
+  "version": "0.1.0",
+  "author": "caverac@gmail.com",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "lint:eslint": "eslint .",
+    "lintfix:eslint": "eslint --fix .",
+    "lint:prettier": "prettier --check .",
+    "lintfix:prettier": "prettier --write .",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "lint:fix": "yarn lintfix:eslint && yarn lintfix:prettier",
+    "nuke": "yarn workspaces foreach -A run nuke && rm -rf node_modules yarn.lock"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.3.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.28.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/gitlab": "^13.2.5",
+    "@types/jest": "^29.5.14",
+    "@typescript-eslint/eslint-plugin": "^8.34.0",
+    "@typescript-eslint/parser": "^8.34.0",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-import-resolver-typescript": "^4.4.3",
+    "eslint-plugin-cdk": "^1.8.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsdoc": "^51.0.1",
+    "eslint-plugin-prettier": "^5.4.1",
+    "globals": "^16.2.0",
+    "jest": "^30.0.0",
+    "prettier": "^3.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "semantic-release": "^24.2.5",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "yarn@4.9.0",
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
