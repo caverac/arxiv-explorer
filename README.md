@@ -28,18 +28,18 @@ Below is a brief overview of the packages in the monorepo:
 # Architecture
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph Client
     CE[Chrome Extension]
-    CE -->|"1. Authorize\n(Cognito)"| Cog[Cognito User Pool]
-    CE -->|"2. Run in Browser"| Br[Browser Runtime]
-    Br -->|"3. Call API\n(API Gateway)"| APIGW[API Gateway]
+    CE-->|1 Authorize|Cog[Cognito User Pool]
+    CE-->|2 Run in Browser|Br[Browser Runtime]
+    Br-->|3 Call API|APIGW[API Gateway]
   end
 
   subgraph Backend
-    APIGW -->|"4. Process Request"| BE[Backend Service]
-    BE -->|"4.1 Call External API"| OA[OpenAI API]
-    BE -->|"5. Store Data"| DB[(RDS Database)]
+    APIGW-->|4 Process Request|BE[Backend Service]
+    BE-->|4.1 Call External API|OA[OpenAI API]
+    BE-->|5 Store Data|DB[(RDS Database)]
   end
 ```
 

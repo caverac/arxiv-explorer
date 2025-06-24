@@ -1,13 +1,13 @@
-flowchart LR
-    subgraph Client
-        CE[Chrome Extension]
-        CE -->|1. Authorize<br/>(Cognito)<br/>| Cog[Cognito User Pool]
-        CE -->|2. Run in Browser| Br[Browser Runtime]
-        Br -->|3. Call API<br/>(API Gateway)| APIGW[API Gateway]
-    end
+flowchart TB
+  subgraph Client
+    CE[Chrome Extension]
+    CE-->|1 Authorize|Cog[Cognito User Pool]
+    CE-->|2 Run in Browser|Br[Browser Runtime]
+    Br-->|3 Call API|APIGW[API Gateway]
+  end
 
-    subgraph Backend
-        APIGW -->|4. Process Request| BE[Backend Service]
-        BE -->|4.1 Call External API| OA[OpenAI API]
-        BE -->|5. Store Data| DB[(RDS Database)]
-    end
+  subgraph Backend
+    APIGW-->|4 Process Request|BE[Backend Service]
+    BE-->|4.1 Call External API|OA[OpenAI API]
+    BE-->|5 Store Data|DB[(RDS Database)]
+  end
