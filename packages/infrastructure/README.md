@@ -5,6 +5,7 @@ This directory contains the infrastructure code for the project, including Terra
 Everything is managed using AWS CDK, which allows us to define our infrastructure as code in a more flexible and maintainable way.
 
 # Running the Infrastructure
+
 To list the stacks in the infrastructure, you can run the following command:
 
 ```bash

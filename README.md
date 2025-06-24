@@ -25,6 +25,24 @@ The code is structured as a [typescript](https://www.typescriptlang.org/) monore
 This allows us to share code between the different packages and makes it easier to manage dependencies.
 Below is a brief overview of the packages in the monorepo:
 
+# Architecture
+
+```mermaid
+flowchart LR
+  subgraph Client
+    CE[Chrome Extension]
+    CE -->|"1. Authorize\n(Cognito)"| Cog[Cognito User Pool]
+    CE -->|"2. Run in Browser"| Br[Browser Runtime]
+    Br -->|"3. Call API\n(API Gateway)"| APIGW[API Gateway]
+  end
+
+  subgraph Backend
+    APIGW -->|"4. Process Request"| BE[Backend Service]
+    BE -->|"4.1 Call External API"| OA[OpenAI API]
+    BE -->|"5. Store Data"| DB[(RDS Database)]
+  end
+```
+
 ## Packages
 
 ### chrome-extension
