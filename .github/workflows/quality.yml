@@ -1,25 +1,23 @@
 name: code quality
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-
     steps:
-      - name: checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: set up node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '22'
+
+      - name: enable Corepack & activate Yarn 4.9.0
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.0 --activate
 
       - name: install dependencies
         run: yarn
@@ -29,15 +27,17 @@ jobs:
 
   unittest:
     runs-on: ubuntu-latest
-
     steps:
-      - name: checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: set up node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '22'
+
+      - name: enable Corepack & activate Yarn 4.9.0
+        run: |
+          corepack enable
+          corepack prepare yarn@4.9.0 --activate
 
       - name: install dependencies
         run: yarn
